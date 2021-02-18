@@ -77,7 +77,7 @@ class PIDController : public Controller
       useIntegralMemoryLimits(true);
     }
 
-    void setIntegralMemoryLimit(float integralMemoryLimit)
+    void setIntegralMemoryLimits(float integralMemoryLimit)
     {
       setIntegralMemoryLimits(integralMemoryLimit, -integralMemoryLimit);
     }
