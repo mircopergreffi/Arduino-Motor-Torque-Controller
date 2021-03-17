@@ -12,7 +12,7 @@ class NoFilter : public Filter
       
     }
 
-    float filter(float raw)
+    float filter(float raw, float dt)
     {
       return raw;
     }
