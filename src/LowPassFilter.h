@@ -16,17 +16,12 @@ class LowPassFilter : public Filter
     LowPassFilter(float cutFreq)
     {
       mCutFreq = cutFreq;
-      mTimeLast = 0;
       mLowPass = 0;
     }
 
-    float filter(float raw)
+    float filter(float raw, float dt)
     {
-      mTimeNew = micros();
-      mTimeDiff = mTimeNew - mTimeLast;
-      mTimeLast = mTimeNew;
-      
-      mLowPass += (raw - mLowPass)*mCutFreq/mTimeDiff;
+      mLowPass += (raw - mLowPass)*mCutFreq*dt;
       return mLowPass;
     }
 };
