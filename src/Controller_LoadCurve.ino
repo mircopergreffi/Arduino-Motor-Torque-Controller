@@ -16,11 +16,11 @@
 #define FILTER_FREQ   100.0
 #define FILTER_RADIUS  10.0
 
-#define PID_KP    5.0
-#define PID_KI    0.0001
-#define PID_KD    0.0
+// #define PID_KP    5.0
+// #define PID_KI    0.0001
+// #define PID_KD    0.0
 
-#define CURRENT_SCALE   19.76f // Ratio between ADC-reading and motor current
+#define CURRENT_SCALE   f // Ratio between ADC-reading and motor current
 #define TORQUE_CONSTANT 1      // Motor torque constant (torque over current)
 
 BandStopFilter mBandStopFilter(FILTER_FREQ, FILTER_RADIUS);
@@ -30,7 +30,7 @@ FullBridge mFullBridge(PIN_RPWM, PIN_LPWM, PIN_REN, PIN_LEN);
 //AutoPIDController mAutoPID(PID_KP, PID_KI, PID_KD);
 //Motor mMotor(&mFullBridge, &mCurrentSense, &mAutoPID);
 
-LoadCurve mLoadCurve(15, 12, 255);
+LoadCurve mLoadCurve(1.0, 1.2, 255);
 Motor mMotor(&mFullBridge, &mCurrentSense, &mLoadCurve);
 
 String mCommand = "";
@@ -38,7 +38,7 @@ char mBuffer;
 
 void onCommand(String command)
 {
-  mLoadCurve.setParameters(18, 12, command.toInt());
+  mLoadCurve.setParameters(1.0, 1.2, command.toInt());
 }
 
 void setup() {
