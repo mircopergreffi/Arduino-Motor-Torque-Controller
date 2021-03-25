@@ -1,4 +1,5 @@
 {
     "programmer": "AVR ISP",
-    "board": "arduino:avr:leonardo"
+    "board": "arduino:avr:leonardo",
+    "port": "COM8"
 }
