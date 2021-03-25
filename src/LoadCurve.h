@@ -2,19 +2,33 @@
 #ifndef LOAD_CURVE_H
 #define LOAD_CURVE_H
 
+/*          
+ * O        |
+ * u  Omax  |------------------+
+ * t        |                   \
+ * p        |                    \
+ * u        |                     \
+ * t        |                      \
+ *          |                       \
+ *          +------------------------+----->
+ *                           Imin   Imax
+ *                 I n p u t
+ * 
+ *  Output -> Voltage
+ *  Input  -> Current
+ * 
+ */
+
 #include "Controller.h"
-#include "LowPassFilter.h"
 
 class LoadCurve : public Controller
 {
   private:
-    LowPassFilter mFilter;
     float mMaxInput, mMinInput, mMaxOutput;
     float mSlope, mIntercept, mOutput;
     
   public:
-    LoadCurve(float maxInput, float minInput, float maxOutput) :
-      mFilter(300)
+    LoadCurve(float maxInput, float minInput, float maxOutput)
     {
       setParameters(maxInput, minInput, maxOutput);
     }
@@ -53,7 +67,6 @@ class LoadCurve : public Controller
       mOutput = mSlope * in + mIntercept;
       if (mOutput > mMaxOutput)
         mOutput = mMaxOutput;
-//      mOutput = mFilter.filter(mOutput);
       return mOutput;
     }
 };
