@@ -1,5 +1,6 @@
 {
     "programmer": "AVR ISP",
     "board": "arduino:avr:leonardo",
-    "port": "COM8"
+    "port": "COM8",
+    "sketch": "src\\Controller_LoadCurve.ino"
 }

@@ -20,7 +20,7 @@
 // #define PID_KI    0.0001
 // #define PID_KD    0.0
 
-#define CURRENT_SCALE   f // Ratio between ADC-reading and motor current
+#define CURRENT_SCALE   13.2f // Ratio between ADC-reading and motor current
 #define TORQUE_CONSTANT 1      // Motor torque constant (torque over current)
 
 BandStopFilter mBandStopFilter(FILTER_FREQ, FILTER_RADIUS);
